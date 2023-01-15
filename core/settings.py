@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 
     "corsheaders",
+    
     "crud_app",
+    "apps.audits"
 ]
 
 MIDDLEWARE = [
