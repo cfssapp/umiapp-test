@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     "corsheaders",
     
     "crud_app",
-    "apps.audits"
+    "apps.audits.AuditsConfig"
 ]
 
 MIDDLEWARE = [
