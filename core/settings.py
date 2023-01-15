@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     "corsheaders",
     
+    "users",
     "crud_app",
     "apps.audits",
 ]
