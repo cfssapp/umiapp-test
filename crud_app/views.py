@@ -1,50 +1,57 @@
 from django.shortcuts import render
 
-from rest_framework.response import Response
-from rest_framework.decorators import api_view
+
+
+
+from django.http import JsonResponse, HttpResponse
+import json
 
 # Create your views here.
 api_urls = {
-    "data": [
+    "success": True,
+    "data": 
         {
-            "id": "trend-1",
-            "updatedAt": "2021-08-20T11:49:35.376Z",
-            "user": {
-                "name": "曲丽丽",
-                "avatar": "https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png"
-            },
-            "group": {
-                "name": "高逼格设计天团",
-                "link": "http://github.com/"
-            },
-            "project": {
-                "name": "六月迭代",
-                "link": "http://github.com/"
-            },
-            "template": "在 @{group} 新建项目 @{project}"
-        },
-        {
-            "id": "trend-2",
-            "updatedAt": "2021-08-20T11:49:35.376Z",
-            "user": {
-                "name": "付小小",
-                "avatar": "https://gw.alipayobjects.com/zos/rmsportal/cnrhVkzwxjPwAaCfPbdc.png"
-            },
-            "group": {
-                "name": "高逼格设计天团",
-                "link": "http://github.com/"
-            },
-            "project": {
-                "name": "六月迭代",
-                "link": "http://github.com/"
-            },
-            "template": "在 @{group} 新建项目 @{project}"
-        },
-    ]
+            "id": 1,
+            "list": [
+                {
+                    "id": 2,
+                    "user": {
+                        "id": 1,
+                        "email": "admin@admin.com",
+                        "user_name": "admin",
+                        "is_active": True,
+                        "avatar": "https://antapi.pythonanywhere.com/media/upload_pics/287279348080d90deec11dfa24065fc0.jpg",
+                        "status": "ok",
+                        "currentAuthority": "admin",
+                        "success": "true"
+                    },
+                    "product_id": "not set",
+                    "product_name": "laptop",
+                    "addcart_id": True
+                }
+            ],
+            "cart_id": "not set",
+            "customer": "admin"
+        }
+    ,
+    "errorCode": 0
 }
 
 
-@api_view(['GET'])
 def apiOverview(request):
-	
-	return Response(api_urls)
+
+    # queryset = Cart.objects.get(pk=1)
+    # serializer = CartSerializer(queryset)
+    # jsonoutput = {
+    #             "success": True,
+    #             'data' : serializer.data,
+    #             "errorCode": 0
+    #         }
+
+    jsonoutput = {
+                "success": True,
+                'data' : api_urls,
+                "errorCode": 0
+            }
+
+    return HttpResponse(json.dumps(jsonoutput), content_type='application/json')
